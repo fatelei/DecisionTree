@@ -12,7 +12,7 @@ def entropy(probabilities):
     rst = 0.0
 
     for p in probabilities:
-        rst = rst + (p * log2(p))
+        rst = rst - (p * log2(p))
     return rst
 
 
@@ -35,7 +35,7 @@ def calc_experence_entropy(dataset):
     classify = {}
     probabilities = []
 
-    for di in dateset:
+    for di in dataset:
         if di[-1] not in classify:
             classify[di[-1]] = 0.0
         classify[di[-1]] += 1.0

@@ -7,13 +7,13 @@ install_requires = []
 
 entry_points = """
     [console_scripts]
-    decision_tree=DesTree.app:run
+    destree=DesTree.app:run
 """
 
 setup(
     author='fatelei@gmail.com',
     version='0.1',
-    name='decision tree',
+    name='decstree',
     install_requires=install_requires,
     entry_points=entry_points,
     packages=find_packages('apps'),

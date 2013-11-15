@@ -32,7 +32,7 @@ def run():
         data = f.read()
         dataset = json.loads(data)
 
-    attributes = [i for i in range(len(dataset[0]))]
+    attributes = [i for i in range(len(dataset[0]) - 1)]
 
     testset = []
     with open(args.test_file) as f:

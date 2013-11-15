@@ -53,7 +53,7 @@ def build_decision_tree(dataset, attributes, threshold=0.0001, tree=None):
     
     # 当训练集中只有一类c
     if len(subset) <= 1:
-        tree.label = subset.keys[0]
+        tree.label = subset.keys()[0]
         return tree
 
     # 当属性集为空
@@ -67,7 +67,7 @@ def build_decision_tree(dataset, attributes, threshold=0.0001, tree=None):
 
     for attribute in attributes:
         hda = calc_condition_entropy(dataset, attribute)
-        gain = info_gain(hd - hda)
+        gain = info_gain(hd, hda)
 
         if max_value < gain:
             max_value = gain
@@ -86,7 +86,7 @@ def build_decision_tree(dataset, attributes, threshold=0.0001, tree=None):
     for key in subset.keys():
         child = Node(subset[key], tree)
         tree.children[key] = child
-        build_decision_tree(subset[key], attributes, threshold=0.0001, child)
+        build_decision_tree(subset[key], attributes, threshold=0.0001, tree=child)
 
     return tree
 

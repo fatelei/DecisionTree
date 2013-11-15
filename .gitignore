@@ -3,5 +3,5 @@ eggs
 develop-eggs
 bin
 *.egg-info
-*.cfg
+.installed.cfg
 parts
