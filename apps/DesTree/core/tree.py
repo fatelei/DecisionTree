@@ -65,6 +65,7 @@ def build_decision_tree(dataset, attributes, threshold=0.0001, tree=None):
     max_value = -1 << 32
     attribute_id = None
 
+    # 选取信息增益最大的特征
     for attribute in attributes:
         hda = calc_condition_entropy(dataset, attribute)
         gain = info_gain(hd, hda)
@@ -78,9 +79,11 @@ def build_decision_tree(dataset, attributes, threshold=0.0001, tree=None):
         return tree
 
     tree.attribute = attribute_id
+
+    # 按照特征attribute_id的各个取值划分数据集
     subset = split_dataset(dataset, attribute_id)
 
-    # 溢出使用过的特征
+    # 去除被选择的特征
     attributes.remove(attribute_id)
 
     for key in subset.keys():
